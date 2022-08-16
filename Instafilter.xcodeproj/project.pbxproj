@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C7811B1D28AAE26D006D0078 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7811B1C28AAE26D006D0078 /* ImagePicker.swift */; };
+		C78DA35528ABDE9400E0643C /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78DA35428ABDE9400E0643C /* ImageSaver.swift */; };
 		C7D4C82828A9726700ADDC7B /* InstafilterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D4C82728A9726700ADDC7B /* InstafilterApp.swift */; };
 		C7D4C82A28A9726700ADDC7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D4C82928A9726700ADDC7B /* ContentView.swift */; };
 		C7D4C82C28A9726900ADDC7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7D4C82B28A9726900ADDC7B /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		C7811B1C28AAE26D006D0078 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C78DA35428ABDE9400E0643C /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		C7D4C82428A9726700ADDC7B /* Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7D4C82728A9726700ADDC7B /* InstafilterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstafilterApp.swift; sourceTree = "<group>"; };
 		C7D4C82928A9726700ADDC7B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				C7D4C82728A9726700ADDC7B /* InstafilterApp.swift */,
 				C7D4C82928A9726700ADDC7B /* ContentView.swift */,
+				C78DA35428ABDE9400E0643C /* ImageSaver.swift */,
 				C7811B1C28AAE26D006D0078 /* ImagePicker.swift */,
 				C7D4C82B28A9726900ADDC7B /* Assets.xcassets */,
 				C7D4C82D28A9726900ADDC7B /* Preview Content */,
@@ -159,6 +162,7 @@
 				C7811B1D28AAE26D006D0078 /* ImagePicker.swift in Sources */,
 				C7D4C82A28A9726700ADDC7B /* ContentView.swift in Sources */,
 				C7D4C82828A9726700ADDC7B /* InstafilterApp.swift in Sources */,
+				C78DA35528ABDE9400E0643C /* ImageSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
