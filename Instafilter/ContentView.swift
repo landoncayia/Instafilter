@@ -11,6 +11,8 @@ struct ContentView: View {
     @State private var image: Image?
     @State private var filterIntensity = 0.5
     
+    @State private var showingImagePicker = false
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -26,7 +28,9 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit()
                 }
-                .onTapGesture { selectImage() }
+                .onTapGesture {
+                    showingImagePicker = true
+                }
                 
                 HStack {
                     Text("Intensity")
@@ -46,10 +50,6 @@ struct ContentView: View {
             .padding([.horizontal, .bottom])
             .navigationTitle("Instafilter")
         }
-    }
-    
-    func selectImage() {
-        
     }
     
     func changeFilter() {
