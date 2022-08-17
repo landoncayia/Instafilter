@@ -26,9 +26,7 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit()
                 }
-                .onTapGesture {
-                    // select an image
-                }
+                .onTapGesture { selectImage() }
                 
                 HStack {
                     Text("Intensity")
@@ -38,20 +36,28 @@ struct ContentView: View {
                 .padding(.vertical)
                 
                 HStack {
-                    Button("Change Filter") {
-                        // change filter
-                    }
+                    Button("Change Filter", action: changeFilter)
                     
                     Spacer()
                     
-                    Button("Save") {
-                        // save the picture
-                    }
+                    Button("Save", action: save)
                 }
             }
             .padding([.horizontal, .bottom])
             .navigationTitle("Instafilter")
         }
+    }
+    
+    func selectImage() {
+        
+    }
+    
+    func changeFilter() {
+        
+    }
+    
+    func save() {
+        
     }
 }
 
