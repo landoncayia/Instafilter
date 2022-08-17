@@ -42,6 +42,7 @@ struct ContentView: View {
                     Text("Intensity")
                     
                     Slider(value: $filterIntensity)
+                        .onChange(of: filterIntensity) { _ in applyProcessing() }
                 }
                 .padding(.vertical)
                 
