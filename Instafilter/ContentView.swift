@@ -66,7 +66,17 @@ struct ContentView: View {
                 ImagePicker(image: $inputImage)
             }
             .confirmationDialog("Select a filter", isPresented: $showingFilterSheet) {
-                // dialog here for selecting filter
+                // Just a handful of CIFilters; there are many more
+                Button("Crystallize") { setFilter(CIFilter.crystallize()) }
+                Button("Edges") { setFilter(CIFilter.edges()) }
+                Button("Gaussian Blur") { setFilter(CIFilter.gaussianBlur()) }
+                Button("Pixellate") { setFilter(CIFilter.pixellate()) }
+                Button("Sepia Tone") { setFilter(CIFilter.sepiaTone()) }
+                Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask()) }
+                Button("Vignette") { setFilter(CIFilter.vignette()) }
+                Button("Comic Effect") { setFilter(CIFilter.comicEffect()) }
+                Button("Photo Effect Chrome") { setFilter(CIFilter.photoEffectChrome()) }
+                Button("Cancel", role: .cancel) { }
             }
         }
     }
@@ -84,9 +94,21 @@ struct ContentView: View {
         
     }
     
+    /// Applies the value of the effect strength slider to the chosen filter.
     func applyProcessing() {
-        // Needed for ambiguous filter rather than setting intensity directly
-        currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
+        // Read which keys the filter supports, and apply the effect if supported
+        let inputKeys = currentFilter.inputKeys
+        
+        if inputKeys.contains(kCIInputIntensityKey) {
+            currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
+        }
+        if inputKeys.contains(kCIInputRadiusKey) {
+            currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+        }
+        if inputKeys.contains(kCIInputScaleKey) {
+            currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
+        }
+        
         
         guard let outputImage = currentFilter.outputImage else { return }
         
