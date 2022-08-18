@@ -15,6 +15,7 @@ struct ContentView: View {
     
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
+    @State private var processedImage: UIImage?
     
     // By default, this is a sepiaTone filter; can by any, though
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
@@ -90,8 +91,12 @@ struct ContentView: View {
         applyProcessing()
     }
     
+    /// Saves an image with a filter applied to the photo library.
     func save() {
+        guard let processedImage = processedImage else { return }
         
+        let imageSaver = ImageSaver()
+        imageSaver.writeToPhotoAlbum(image: processedImage)
     }
     
     /// Applies the value of the effect strength slider to the chosen filter.
@@ -115,6 +120,7 @@ struct ContentView: View {
         if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
             let uiImage = UIImage(cgImage: cgimg)
             image = Image(uiImage: uiImage)
+            processedImage = uiImage
         }
     }
     
