@@ -16,8 +16,11 @@ struct ContentView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     
-    @State private var currentFilter = CIFilter.sepiaTone()
+    // By default, this is a sepiaTone filter; can by any, though
+    @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
+    
+    @State private var showingFilterSheet = false
     
     var body: some View {
         NavigationView {
@@ -47,7 +50,9 @@ struct ContentView: View {
                 .padding(.vertical)
                 
                 HStack {
-                    Button("Change Filter", action: changeFilter)
+                    Button("Change Filter") {
+                        showingFilterSheet = true
+                    }
                     
                     Spacer()
                     
@@ -59,6 +64,9 @@ struct ContentView: View {
             .onChange(of: inputImage) { _ in loadImage() }
             .sheet(isPresented: $showingImagePicker) {
                 ImagePicker(image: $inputImage)
+            }
+            .confirmationDialog("Select a filter", isPresented: $showingFilterSheet) {
+                // dialog here for selecting filter
             }
         }
     }
@@ -72,16 +80,13 @@ struct ContentView: View {
         applyProcessing()
     }
     
-    func changeFilter() {
-        
-    }
-    
     func save() {
         
     }
     
     func applyProcessing() {
-        currentFilter.intensity = Float(filterIntensity)
+        // Needed for ambiguous filter rather than setting intensity directly
+        currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
         
         guard let outputImage = currentFilter.outputImage else { return }
         
@@ -89,6 +94,11 @@ struct ContentView: View {
             let uiImage = UIImage(cgImage: cgimg)
             image = Image(uiImage: uiImage)
         }
+    }
+    
+    func setFilter(_ filter: CIFilter) {
+        currentFilter = filter
+        loadImage()
     }
 }
 
