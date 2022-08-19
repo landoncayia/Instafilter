@@ -57,7 +57,9 @@ struct ContentView: View {
                     
                     Spacer()
                     
+                    // Save button is disabled if there is no image in the image view
                     Button("Save", action: save)
+                        .disabled(image == nil)
                 }
             }
             .padding([.horizontal, .bottom])
