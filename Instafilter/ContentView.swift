@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var image: Image?
     @State private var filterIntensity = 0.5  // range of 0-1
     @State private var filterRadius = 100.0   // range of 0-200
+    @State private var filterScale = 25.0      // range of 0-50
     
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
@@ -59,6 +60,15 @@ struct ContentView: View {
                         
                         Slider(value: $filterRadius, in: 0...200)
                             .onChange(of: filterRadius) { _ in applyProcessing() }
+                    }
+                    .padding(.bottom)
+                    
+                    HStack {
+                        Text("Scale")
+                            .frame(width: 70, alignment: .trailing)
+                        
+                        Slider(value: $filterScale, in: 0...50)
+                            .onChange(of: filterScale) { _ in applyProcessing() }
                     }
                     .padding(.bottom)
                 }
@@ -135,7 +145,7 @@ struct ContentView: View {
             currentFilter.setValue(filterRadius, forKey: kCIInputRadiusKey)
         }
         if inputKeys.contains(kCIInputScaleKey) {
-            currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
+            currentFilter.setValue(filterScale, forKey: kCIInputScaleKey)
         }
         
         
