@@ -11,7 +11,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var image: Image?
-    @State private var filterIntensity = 0.5
+    @State private var filterIntensity = 0.5  // range of 0-1
+    @State private var filterRadius = 100.0   // range of 0-200
     
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
@@ -42,13 +43,25 @@ struct ContentView: View {
                     showingImagePicker = true
                 }
                 
-                HStack {
-                    Text("Intensity")
+                VStack {
+                    HStack {
+                        Text("Intensity")
+                            .frame(width: 70, alignment: .trailing)
+                        
+                        Slider(value: $filterIntensity)
+                            .onChange(of: filterIntensity) { _ in applyProcessing() }
+                    }
+                    .padding(.vertical)
                     
-                    Slider(value: $filterIntensity)
-                        .onChange(of: filterIntensity) { _ in applyProcessing() }
+                    HStack {
+                        Text("Radius")
+                            .frame(width: 70, alignment: .trailing)
+                        
+                        Slider(value: $filterRadius, in: 0...200)
+                            .onChange(of: filterRadius) { _ in applyProcessing() }
+                    }
+                    .padding(.bottom)
                 }
-                .padding(.vertical)
                 
                 HStack {
                     Button("Change Filter") {
@@ -119,7 +132,7 @@ struct ContentView: View {
             currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
         }
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(filterRadius, forKey: kCIInputRadiusKey)
         }
         if inputKeys.contains(kCIInputScaleKey) {
             currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
