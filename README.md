@@ -8,7 +8,10 @@ To run this project, you will need a Mac computer with the latest version of Xco
 
 ## Features
 
-
+* Select an image from your photo library to import
+* Apply an image effect from a preselected set
+* Modify intensity, radius, and scale where applicable
+* Save modified photos to your photo library
 
 ## Credit
 
@@ -30,7 +33,8 @@ The idea for this project came from Paul Hudson's *100 Days of SwiftUI*. I may e
 
 Screenshots will go here when they are ready.
 
-<!--<p float="left">-->
-<!--    <img src="screenshots/instafiler1.png" alt="Instafilter Screenshot 1" width="341">-->
-<!--    <img src="screenshots/instafilter2.png" alt="Instafilter Screenshot 2" width="341">-->
-<!--</p>-->
+<p float="left">
+    <img src="screenshots/instafilter1.png" alt="Instafilter Screenshot 1" width="341">
+    <img src="screenshots/instafilter2.png" alt="Instafilter Screenshot 2" width="341">
+    <img src="screenshots/instafilter3.png" alt="Instafilter Screenshot 3" width="341">
+</p>
